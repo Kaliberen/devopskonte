@@ -1,4 +1,5 @@
 ## Oppgave 1 - DevOps-prosess for team
+
 ### 1. Branch-strategi
 
 Teamet bruker branch-strategi inspirert av Git-flow. 
@@ -99,5 +100,23 @@ Denne automatiseringen sikrer kontinuerlig kvalitet, rask tilbakemelding og tryg
 ![alt text](screenshots/bilde-1.png)
 
 
-
 - - -
+
+## Oppgave 2
+
+![alt text](screenshots/bilde-3.png)
+![alt text](screenshots/bildedock1.png)
+
+#### Før
+
+- quiz-app-old
+- 608MB
+
+![alt text](screenshots/bildeFør.png)
+
+#### Etter
+
+- quiz-app-new
+- 318MB
+
+![alt text](screenshots/imageEtter-1.png)
