@@ -87,4 +87,7 @@ Pipeline feiler dersom det oppdages HIGH eller CRITCAL sårbarheter.
 
 Denne automatiseringen sikrer kontinuerlig kvalitet, rask tilbakemelding og trygg deply-prosess.
 
+![alt text](bilde.png)
+![alt text](bilde-1.png)
+
 - - -
