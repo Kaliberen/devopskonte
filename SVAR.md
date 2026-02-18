@@ -51,14 +51,22 @@ Code review skal fokusere på:
 - - -
 
 ### Branch Protection
-Hvilke regler skal main-branch ha?
+
 `main`-branchen er beskyttet med følgende regler:
 - Krev Pull Request før merge
 - Krev godkjent code review
 - Krev at alle status checks (CI pipeline) består
 - Forhindre direkte push
 
-Hvorfor er disse viktige for teamarbeid?
+#### Branch protection regler for `main` er konfigurert med:
+
+- Required Pull Request before merge
+- Required status checks
+- Required conversation resolution
+- No direct push allowed
+- Administrators cannot bypass rules
+
+
 #### Dette sikrer at ingen kan omgå kvalitetssikring, og at produksjonskoden alltid holder høy standard
 
 - - -
@@ -86,5 +94,10 @@ Pipeline feiler dersom det oppdages HIGH eller CRITCAL sårbarheter.
 - Tagging med commit SHA og `latest`
 
 Denne automatiseringen sikrer kontinuerlig kvalitet, rask tilbakemelding og trygg deply-prosess.
+
+![alt text](bilde.png)
+![alt text](bilde-1.png)
+
+
 
 - - -
