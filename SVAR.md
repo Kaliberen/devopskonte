@@ -119,4 +119,9 @@ Denne automatiseringen sikrer kontinuerlig kvalitet, rask tilbakemelding og tryg
 - quiz-app-new
 - 318MB
 
-![alt text](screenshots/imageEtter-1.png)
+![alt text](screenshots/imageEtter.png)
+
+- - -
+
+## Oppgave 3.
+
