@@ -125,3 +125,6 @@ Denne automatiseringen sikrer kontinuerlig kvalitet, rask tilbakemelding og tryg
 
 ## Oppgave 3.
 
+
+![alt text](screenshots/alertVul.png)
+
