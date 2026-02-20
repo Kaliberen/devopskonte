@@ -125,7 +125,20 @@ Denne automatiseringen sikrer kontinuerlig kvalitet, rask tilbakemelding og tryg
 
 ## Oppgave 3.
 
+Mislykket workflow på main (med docker push) 
 
 ![alt text](screenshots/alertVul.png)
 
 ![alt text](trivyTable.png)
+
+github action runs
+![alt text](bilde.png)
+
+alle sjekkpunkter
+
+![alt text](bilde-1.png)
+
+code scanning
+![alt text](bilde-2.png)
+
+Oppgave 4 
