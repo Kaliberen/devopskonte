@@ -128,3 +128,4 @@ Denne automatiseringen sikrer kontinuerlig kvalitet, rask tilbakemelding og tryg
 
 ![alt text](screenshots/alertVul.png)
 
+![alt text](trivyTable.png)
