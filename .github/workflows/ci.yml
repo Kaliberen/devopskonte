@@ -69,23 +69,24 @@ jobs:
           ignore-unfixed: true
           exit-code: 1
 
-      # Upload SARIF (only if file exists)
+      # Upload SARIF (only if file exists) - unique categories to allow 2 uploads per job
       - name: Upload SARIF (filesystem) to GitHub Security
         uses: github/codeql-action/upload-sarif@v4
         if: always() && hashFiles('trivy-fs.sarif') != ''
         with:
           sarif_file: trivy-fs.sarif
+          category: trivy-fs
 
       - name: Upload SARIF (image) to GitHub Security
         uses: github/codeql-action/upload-sarif@v4
         if: always() && hashFiles('trivy-image.sarif') != ''
         with:
           sarif_file: trivy-image.sarif
+          category: trivy-image
 
       # -----------------------------
       # SECURITY GATE (fail PR on HIGH/CRITICAL)
-      # If Trivy steps returned non-zero, they are marked as "failure" internally.
-      # We fail after SARIF upload so you still get findings in Security tab.
+      # Fail AFTER SARIF upload so Security tab still gets results
       # -----------------------------
       - name: Fail if Trivy filesystem scan found HIGH/CRITICAL
         if: steps.trivy_fs.outcome == 'failure'
@@ -156,18 +157,20 @@ jobs:
           ignore-unfixed: true
           exit-code: 1
 
-      # Upload SARIF (only if file exists)
+      # Upload SARIF (unique categories)
       - name: Upload SARIF (filesystem) to GitHub Security
         uses: github/codeql-action/upload-sarif@v4
         if: always() && hashFiles('trivy-fs.sarif') != ''
         with:
           sarif_file: trivy-fs.sarif
+          category: trivy-fs
 
       - name: Upload SARIF (image) to GitHub Security
         uses: github/codeql-action/upload-sarif@v4
         if: always() && hashFiles('trivy-image.sarif') != ''
         with:
           sarif_file: trivy-image.sarif
+          category: trivy-image
 
       # Fail after SARIF upload if vulnerabilities found
       - name: Fail if Trivy filesystem scan found HIGH/CRITICAL
