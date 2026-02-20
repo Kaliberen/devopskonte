@@ -142,3 +142,14 @@ code scanning
 ![alt text](bilde-2.png)
 
 Oppgave 4 
+m student innen IT og programmering har jeg opplevd hvordan AI-verktøy som ChatGPT og GitHub Copilot kan øke produktiviteten dramatisk. I dette prosjektet brukte jeg AI til å generere deler av CI/CD-workflowen, forbedre Dockerfile og forstå hvordan Trivy kunne integreres i GitHub Actions. Det gjorde at jeg kunne komme raskere frem til en fungerende løsning enn jeg ellers ville gjort alene. Samtidig erfarte jeg tydelig hvorfor DevOps-prinsipper blir enda viktigere når AI øker utviklingshastigheten.
+
+AI kan generere kode raskt, men den garanterer ikke kvalitet eller sikkerhet. I mitt prosjekt fungerte applikasjonen teknisk sett, men Trivy oppdaget flere HIGH og CRITICAL sårbarheter i dependencies som Spring Boot og Tomcat. Dette viste meg at selv om AI hjelper meg å skrive kode raskere, må jeg fortsatt forstå hva som faktisk kjøres i produksjon. DevOps-praksis som automatiserte tester, Docker-build og sikkerhetsskanning fungerte som en kvalitetssikring av både min egen og AI-generert kode.
+
+Som IT-programmererstudent har jeg også lært at struktur er avgjørende i teamarbeid. Gjennom branch-strategi, Pull Requests og branch protection-regler opplevde jeg hvordan DevOps skaper trygghet og forutsigbarhet. Ingen kode kunne merges til main uten at tester, build og sikkerhetsskanning var vellykket. Dette ga en profesjonell arbeidsflyt som ligner det man møter i arbeidslivet. AI kan hjelpe med å skrive kode, men det er DevOps som sikrer at koden faktisk er produksjonsklar.
+
+En annen viktig lærdom for meg er hvordan DevSecOps blir en naturlig del av utviklingsprosessen. Tidligere kunne sikkerhet føles som noe som kom til slutt. I dette prosjektet var sikkerhet integrert i pipeline gjennom Trivy. Når pipeline feilet på grunn av sårbarheter, ble jeg tvunget til å oppgradere dependencies og forbedre Docker-imaget. Dette gjorde meg mer bevisst på ansvar som utvikler. AI kan foreslå løsninger, men jeg må forstå og validere dem.
+
+AI gjør meg mer effektiv som student og fremtidig utvikler. Jeg kan lære raskere, eksperimentere mer og løse problemer mer effektivt. Men nettopp fordi tempoet øker, blir behovet for kontroll større. DevOps gir den kontrollen gjennom automatisering, standardisering og kontinuerlig kvalitetssikring.
+
+For meg har dette prosjektet vist at AI og DevOps ikke konkurrerer – de utfyller hverandre. AI øker produktiviteten min som utvikler, mens DevOps sikrer at produktiviteten ikke går på bekostning av kvalitet, stabilitet og sikkerhet. I fremtidig arbeid som IT-programmerer vil kombinasjonen av AI-kompetanse og solid DevOps-forståelse være avgjørende for å levere robuste og sikre løsninger.
