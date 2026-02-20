@@ -187,6 +187,7 @@ jobs:
           echo "Trivy filesystem scan found HIGH/CRITICAL vulnerabilities."
           exit 1
 
+          
       - name: Fail if Trivy image scan found HIGH/CRITICAL
         if: steps.trivy_image.outcome == 'failure'
         run: |
