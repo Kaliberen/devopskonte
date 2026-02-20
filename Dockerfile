@@ -2,22 +2,21 @@
 # Entrypoint / CMD missing - application does not start on docker run!
 
 FROM maven:3.9.5-eclipse-temurin-21 AS build
-
 WORKDIR /app
 
 COPY pom.xml .
-RUN mvn -q -DskipTests dependency:go-offline
+RUN mvn -q -DskipTests --no-transfer-progress dependency:go-offline
 
 COPY src ./src
-RUN mvn -q -DskipTests clean package
+RUN mvn -q -DskipTests --no-transfer-progress clean package
 
 FROM eclipse-temurin:21-jre
 WORKDIR /app
 
 RUN useradd -r -u 10001 appuser
-USER appuser
+USER 10001
 
 COPY --from=build /app/target/*.jar /app/app.jar
 
 EXPOSE 8080
-ENTRYPOINT [ "java","-jar","/app/app.jar" ]
+ENTRYPOINT ["java","-jar","/app/app.jar"]
