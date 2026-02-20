@@ -34,10 +34,7 @@ jobs:
       - name: Build Docker image
         run: docker build -t quiz-app:${{ github.sha }} .
 
-      # -----------------------------
-      # TRIVY FS SCAN (SARIF)
-      # continue-on-error ensures SARIF file is produced even if vulnerabilities are found
-      # -----------------------------
+      # --- Trivy FS scan (deps) -> SARIF
       - name: Trivy filesystem scan (SARIF)
         id: trivy_fs
         uses: aquasecurity/trivy-action@0.33.1
@@ -45,6 +42,7 @@ jobs:
         with:
           scan-type: fs
           scan-ref: .
+          scanners: vuln
           format: sarif
           output: trivy-fs.sarif
           severity: HIGH,CRITICAL
@@ -52,9 +50,20 @@ jobs:
           ignore-unfixed: true
           exit-code: 1
 
-      # -----------------------------
-      # TRIVY IMAGE SCAN (SARIF)
-      # -----------------------------
+      # Debug output (viser hva som feiler)
+      - name: Trivy FS (table) - show HIGH/CRITICAL
+        if: always()
+        uses: aquasecurity/trivy-action@0.33.1
+        with:
+          scan-type: fs
+          scan-ref: .
+          scanners: vuln
+          format: table
+          severity: HIGH,CRITICAL
+          ignore-unfixed: true
+          exit-code: 0
+
+      # --- Trivy image scan -> SARIF
       - name: Trivy image scan (SARIF)
         id: trivy_image
         uses: aquasecurity/trivy-action@0.33.1
@@ -69,7 +78,7 @@ jobs:
           ignore-unfixed: true
           exit-code: 1
 
-      # Upload SARIF (only if file exists) - unique categories to allow 2 uploads per job
+      # Upload SARIF (unique categories)
       - name: Upload SARIF (filesystem) to GitHub Security
         uses: github/codeql-action/upload-sarif@v4
         if: always() && hashFiles('trivy-fs.sarif') != ''
@@ -84,10 +93,7 @@ jobs:
           sarif_file: trivy-image.sarif
           category: trivy-image
 
-      # -----------------------------
-      # SECURITY GATE (fail PR on HIGH/CRITICAL)
-      # Fail AFTER SARIF upload so Security tab still gets results
-      # -----------------------------
+      # Security gate (fail AFTER upload)
       - name: Fail if Trivy filesystem scan found HIGH/CRITICAL
         if: steps.trivy_fs.outcome == 'failure'
         run: |
@@ -127,7 +133,7 @@ jobs:
       - name: Build Docker image
         run: docker build -t quiz-app:${{ github.sha }} .
 
-      # Trivy FS scan (SARIF)
+      # Trivy FS scan (deps) -> SARIF
       - name: Trivy filesystem scan (SARIF)
         id: trivy_fs
         uses: aquasecurity/trivy-action@0.33.1
@@ -135,6 +141,7 @@ jobs:
         with:
           scan-type: fs
           scan-ref: .
+          scanners: vuln
           format: sarif
           output: trivy-fs.sarif
           severity: HIGH,CRITICAL
@@ -142,7 +149,7 @@ jobs:
           ignore-unfixed: true
           exit-code: 1
 
-      # Trivy image scan (SARIF)
+      # Trivy image scan -> SARIF
       - name: Trivy image scan (SARIF)
         id: trivy_image
         uses: aquasecurity/trivy-action@0.33.1
@@ -185,7 +192,6 @@ jobs:
           echo "Trivy image scan found HIGH/CRITICAL vulnerabilities."
           exit 1
 
-      # Docker Hub push should only happen if scans passed (i.e. we did not exit above)
       - name: Login to Docker Hub
         uses: docker/login-action@v3
         with:
