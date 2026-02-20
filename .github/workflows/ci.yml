@@ -57,7 +57,7 @@ jobs:
       # Genererer SARIF for GitHub Security-tab
       # ------------------------------------------------------------
       - name: Trivy filesystem scan (SARIF) - fail on HIGH/CRITICAL
-        uses: aquasecurity/trivy-action@v0.34.0
+        uses: aquasecurity/trivy-action@0.33.1
         with:
           scan-type: fs
           scan-ref: .
@@ -72,7 +72,7 @@ jobs:
       # Scanner selve Docker-imaget for OS og library vulnerabilities
       # ------------------------------------------------------------
       - name: Trivy image scan (SARIF) - fail on HIGH/CRITICAL
-        uses: aquasecurity/trivy-action@v0.34.0
+        uses: aquasecurity/trivy-action@0.33.1
         with:
           scan-type: image
           image-ref: quiz-app:${{ github.sha }}
@@ -138,7 +138,7 @@ jobs:
 
       # Sikkerhetssjekk av dependencies
       - name: Trivy filesystem scan (SARIF) - fail on HIGH/CRITICAL
-        uses: aquasecurity/trivy-action@v0.34.0
+        uses: aquasecurity/trivy-action@0.33.1
         with:
           scan-type: fs
           scan-ref: .
@@ -150,7 +150,7 @@ jobs:
 
       # Sikkerhetssjekk av Docker image
       - name: Trivy image scan (SARIF) - fail on HIGH/CRITICAL
-        uses: aquasecurity/trivy-action@v0.34.0
+        uses: aquasecurity/trivy-action@0.33.1
         with:
           scan-type: image
           image-ref: quiz-app:${{ github.sha }}
